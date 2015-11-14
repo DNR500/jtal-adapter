@@ -1,0 +1,36 @@
+{
+  "name": "jtal-adapters",
+  "version": "0.0.0",
+  "description": "Project to accompany cheesecake (https://github.com/DNR500/cheesecake) - allowing views to be created with the TAL framework using a declaritive json format",
+  "main": " ",
+  "repository": {
+    "type": "git",
+    "url": "*"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "keywords": [
+    "cheesecake"
+  ],
+  "author": "Nathan Richards",
+  "license": " ",
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "chai-json-schema": "^1.2.0",
+    "grunt": "^0.4.5",
+    "grunt-cli": "^0.1.13",
+    "grunt-contrib-jasmine": "^0.9.2",
+    "grunt-contrib-jshint": "^0.10.0",
+    "grunt-exec": "^0.4.6",
+    "grunt-jsonlint": "^1.0.4",
+    "jsonfile": "^2.2.1",
+    "mocha": "^2.2.5",
+    "z-schema": "^3.16.0",
+    "deepmerge": "^0.2.10",
+    "util": "^0.10.3",
+    "grunt-contrib-copy": "^0.8.2",
+    "grunt-contrib-clean": "^0.7.0",
+    "grunt-bump": "^0.6.0"
+  }
+}

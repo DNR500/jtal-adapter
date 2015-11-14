@@ -1,0 +1,26 @@
+{
+  "name": "jtal-adapters",
+  "version": "0.0.0",
+  "authors": [
+    "Nathan Richards <nathan.richards@bbc.co.uk>"
+  ],
+  "description": "Project to accompany cheesecake (https://github.com/DNR500/cheesecake) - allowing views to be created with the TAL framework using a declaritive json format",
+  "main": "build/uncompressed/adapters/jtal/jtaladapter.js",
+  "ignore": [
+    "src",
+    "test",
+    "vendor",
+    ".gitignore",
+    "bower.json",
+    "Gruntfile.js",
+    "package.json",
+    "README.md"
+  ],
+  "dependencies": {
+    "tal": "~3.0.2",
+    "cheesecake": "~0.0.4"
+  }
+}
+
+
+
