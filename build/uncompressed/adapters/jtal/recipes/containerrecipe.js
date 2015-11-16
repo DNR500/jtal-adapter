@@ -5,11 +5,11 @@ require.def('jtal/recipes/containerrecipe',
     ],
     function (Container, recipeUtils) {
         'use strict';
-        return function (uniqueId, data) {
+        return function (data) {
             if(!data.children){
                 throw "container recipe requires that children be set";
             }
-            var container = new Container(uniqueId);
+            var container = new Container(data.id);
             recipeUtils.addCssClasses(container, data.cssClasses);
             return container;
         };

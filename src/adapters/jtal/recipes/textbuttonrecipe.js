@@ -6,11 +6,11 @@ require.def('jtal/recipes/textbuttonrecipe',
     ],
     function (Button, Label, recipeUtils) {
         'use strict';
-        return function (uniqueId, data) {
+        return function ( data) {
             if(!data.text){
                 throw "textbutton recipe requires that text be set";
             }
-            var button = new Button(uniqueId);
+            var button = new Button(data.id);
             recipeUtils.addCssClasses(button, data.cssClasses);
             button.appendChildWidget(new Label(undefined, data.text));
             return button;

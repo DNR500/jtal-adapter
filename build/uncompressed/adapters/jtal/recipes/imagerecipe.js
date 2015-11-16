@@ -5,11 +5,11 @@ require.def('jtal/recipes/imagerecipe',
     ],
     function (Image, recipeUtils) {
         'use strict';
-        return function (uniqueId, data) {
+        return function (data) {
             if(!data.source){
                 throw "image recipe requires that source be set";
             }
-            var image = new Image(uniqueId, data.source);
+            var image = new Image(data.id, data.source);
             recipeUtils.addCssClasses(image, data.cssClasses);
             return image;
         };

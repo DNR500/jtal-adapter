@@ -5,8 +5,8 @@ require.def('jtal/recipes/buttonrecipe',
     ],
     function (Button, recipeUtils) {
         'use strict';
-        return function (uniqueId, data) {
-            var button = new Button(uniqueId);
+        return function (data) {
+            var button = new Button(data.id);
             recipeUtils.addCssClasses(button, data.cssClasses);
             return button;
         };
