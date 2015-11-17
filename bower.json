@@ -4,6 +4,7 @@
   "authors": [
     "Nathan Richards <nathan.richards@bbc.co.uk>"
   ],
+  "files":["build/"],
   "description": "Project to accompany cheesecake (https://github.com/DNR500/cheesecake) - allowing views to be created with the TAL framework using a declaritive json format",
   "main": "build/uncompressed/adapters/jtal/jtaladapter.js",
   "ignore": [

@@ -22,7 +22,7 @@ module.exports = function(grunt) {
                         "vendor/test/lib/*.js",
                         "node_modules/z-schema/dist/ZSchema-browser-min.js"
                     ],
-                    keepRunner: true,
+                    keepRunner: false,
                     outfile: "vendor/test/lib/bubble/bubbleSpecRunner.html",
                     template: "vendor/test/lib/bubble/SpecRunner.html",
                     templateOptions:{

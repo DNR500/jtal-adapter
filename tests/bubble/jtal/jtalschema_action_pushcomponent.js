@@ -15,7 +15,7 @@ require(
             })
         }
 
-        describe("launch application action", function() {
+        describe("push component action", function() {
             var validatorOptions = {
                 noEmptyArrays: true,
                 noEmptyStrings: true
@@ -23,10 +23,10 @@ require(
             var validator = new ZSchema(validatorOptions);
             jTalAdapter.configureFactory(cheesecakeFactory);
 
-            it("should call the launch application function with a full set of params", function() {
-                var mockApplication = { launchAppFromURL: function () {} };
+            it("should call the push component function with a full set of params", function() {
+                var mockApplication = { pushComponent: function () {} };
                 spyOn(Application, "getCurrentApplication").and.returnValue(mockApplication);
-                spyOn(mockApplication, "launchAppFromURL");
+                spyOn(mockApplication, "pushComponent");
 
                 var jTalSample = {
                     "cheesecake": {
@@ -34,15 +34,14 @@ require(
                         "actions": [
                             {
                                 "eventType": "select",
-                                "command": "launchApp",
+                                "command": "pushComponent",
                                 "parameters": {
-                                    "url":"http://www.google.com/",
-                                    "data": {
-                                        "querystringparam1":"value_1",
-                                        "querystringparam2":"value_2"
-                                    },
-                                    "route":["some", "route"],
-                                    "overwrite": true
+                                    "id":"http://www.google.com/",
+                                    "modules":"module/to/load",
+                                    "args": {
+                                        "param1":"value_1",
+                                        "param2":"value_2"
+                                    }
                                 }
                             }
                         ]
@@ -59,17 +58,16 @@ require(
 
                 talWidget.fireEvent(new Event("select"));
 
-                expect(mockApplication.launchAppFromURL.calls.mostRecent().args[0]).toEqual("http://www.google.com/");
-                expect(mockApplication.launchAppFromURL.calls.mostRecent().args[1]).toEqual({ querystringparam1:"value_1", querystringparam2:"value_2" });
-                expect(mockApplication.launchAppFromURL.calls.mostRecent().args[2]).toEqual(["some", "route"]);
-                expect(mockApplication.launchAppFromURL.calls.mostRecent().args[3]).toBeTruthy();
+                expect(mockApplication.pushComponent).toHaveBeenCalled();
+                expect(mockApplication.pushComponent.calls.mostRecent().args[0]).toEqual("http://www.google.com/");
+                expect(mockApplication.pushComponent.calls.mostRecent().args[1]).toEqual("module/to/load");
+                expect(mockApplication.pushComponent.calls.mostRecent().args[2]).toEqual({ param1:"value_1", param2:"value_2" });
             });
 
-            it("should call the launch application function with only basic requirements for parameters", function() {
-                var mockApplication = { launchAppFromURL: function () {} };
+            it("should call the push component function with the minimum set of params", function() {
+                var mockApplication = { pushComponent: function () {} };
                 spyOn(Application, "getCurrentApplication").and.returnValue(mockApplication);
-                spyOn(mockApplication, "launchAppFromURL");
-
+                spyOn(mockApplication, "pushComponent");
 
                 var jTalSample = {
                     "cheesecake": {
@@ -77,9 +75,10 @@ require(
                         "actions": [
                             {
                                 "eventType": "select",
-                                "command": "launchApp",
+                                "command": "pushComponent",
                                 "parameters": {
-                                    "url":"http://www.google.com/"
+                                    "id":"http://www.google.com/",
+                                    "modules":"module/to/load"
                                 }
                             }
                         ]
@@ -96,26 +95,23 @@ require(
 
                 talWidget.fireEvent(new Event("select"));
 
-                expect(mockApplication.launchAppFromURL.calls.mostRecent().args[0]).toEqual("http://www.google.com/");
-                expect(mockApplication.launchAppFromURL.calls.mostRecent().args[1]).toBeUndefined();
-                expect(mockApplication.launchAppFromURL.calls.mostRecent().args[2]).toBeUndefined();
-                expect(mockApplication.launchAppFromURL.calls.mostRecent().args[3]).toBeFalsy();
+                expect(mockApplication.pushComponent).toHaveBeenCalled();
+                expect(mockApplication.pushComponent.calls.mostRecent().args[0]).toEqual("http://www.google.com/");
+                expect(mockApplication.pushComponent.calls.mostRecent().args[1]).toEqual("module/to/load");
+                expect(mockApplication.pushComponent.calls.mostRecent().args[2]).toBeUndefined();
             });
 
-            it("should should error if the url is missing from the parameters", function(done) {
-                var mockApplication = { launchAppFromURL: function () {} };
-                spyOn(Application, "getCurrentApplication").and.returnValue(mockApplication);
-                spyOn(mockApplication, "launchAppFromURL");
-
-
+            it("should error when modules is missing", function(done) {
                 var jTalSample = {
                     "cheesecake": {
                         "recipeName": "button",
                         "actions": [
                             {
                                 "eventType": "select",
-                                "command": "launchApp",
-                                "parameters": {}
+                                "command": "pushComponent",
+                                "parameters": {
+                                    "id":"http://www.google.com/"
+                                }
                             }
                         ]
                     }
@@ -132,43 +128,46 @@ require(
                 }
             });
 
-
-            it("should fail schema validation when additional properties are added", function() {
+            it("should fail schema validation when additional property is added to action", function() {
                 var jTalSample = {
                     "cheesecake": {
                         "recipeName": "button",
                         "actions": [
                             {
                                 "eventType": "select",
-                                "command": "launchApp",
+                                "command": "pushComponent",
                                 "parameters": {
-                                    "url":"http://www.google.com/",
+                                    "id":"something",
+                                    "modules":"some/module"
                                 },
                                 "hello":"betty"
                             }
                         ]
                     }
                 };
+
                 var schemaTestResult = validator.validate(jTalSample, jTalSchema);
                 expect(schemaTestResult).toBeFalsy();
             });
 
-            it("should fail schema validation when additional properties are added to paramters", function() {
+            it("should fail schema validation when additional property is added to parameters", function() {
                 var jTalSample = {
                     "cheesecake": {
                         "recipeName": "button",
                         "actions": [
                             {
                                 "eventType": "select",
-                                "command": "launchApp",
+                                "command": "pushComponent",
                                 "parameters": {
-                                    "url":"http://www.google.com/",
+                                    "id":"something",
+                                    "modules":"some/module",
                                     "hello":"betty"
                                 }
                             }
                         ]
                     }
                 };
+
                 var schemaTestResult = validator.validate(jTalSample, jTalSchema);
                 expect(schemaTestResult).toBeFalsy();
             });
