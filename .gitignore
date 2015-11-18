@@ -80,3 +80,5 @@ node_modules
 bower_components
 
 vendor/test/lib/bubble/bubbleSpecRunner.html
+
+reports

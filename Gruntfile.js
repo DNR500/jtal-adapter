@@ -3,6 +3,24 @@ module.exports = function(grunt) {
     grunt.initConfig({
         pkg: grunt.file.readJSON('package.json'),
 
+        plato: {
+            src: {
+                options : {
+                    exclude: /\.min\.js$/
+                },
+                files: {
+                    'reports/plato': ['src/**/*.js']
+                }
+            }
+        },
+
+        open : {
+            plato : {
+                path: 'reports/plato/index.html',
+                app: 'Google Chrome'
+            }
+        },
+
         jsonlint: {
             project: {
                 src: ['package.json', 'bower.json', 'src/**/*.json', 'test/**/*.json']
@@ -66,11 +84,14 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-copy');
     grunt.loadNpmTasks('grunt-bump');
     grunt.loadNpmTasks('grunt-contrib-clean');
+    grunt.loadNpmTasks('grunt-plato');
+    grunt.loadNpmTasks('grunt-open');
 
     grunt.registerTask('check', ['jsonlint', 'jshint']);
     grunt.registerTask('test', ['check', 'jasmine']);
     grunt.registerTask('build', ['test', 'clean:build', 'copy:srcToBuild']);
     grunt.registerTask('release', ['build', 'bump']);
+    grunt.registerTask('launch-plato', ['plato', 'open:plato']);
     grunt.registerTask('default', ['test']);
     grunt.loadNpmTasks('grunt-exec');
 
