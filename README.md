@@ -20,11 +20,11 @@ bower install jtal
 
 ### About jTal
 
-The jTal library is a set of recipes and actions that has been assembled to allow the creation of UI elements using JSON and TAL in a declarative approach. In terms of TAL it provides JSON definitions for..
+The jTal library is a set of recipes and actions that has been assembled to allow the creation of UI elements using JSON and TAL in a declarative approach. It provides processes for dealing with the following on the client..
 
 * **Recipes** - which outline specific UI to be created for render.
-* **Actions** - actions are triggered in response to UI events.
-* **Stats** - which can be defined on each action.
+* **Actions** - actions are usable functions that are triggered in response to UI events.
+* **Stats** - stats reporting can be fired in response to an event fire.
 
 This JSON presents the basis on which you can create more complex visual components ready for being appended to the DOM.
 
