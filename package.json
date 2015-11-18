@@ -8,7 +8,7 @@
     "url": "git://github.com/DNR500/jtal-adapter.git"
   },
   "bugs": {
-      "url": "https://github.com/DNR500/jtal-adapter/issues"
+    "url": "https://github.com/DNR500/jtal-adapter/issues"
   },
   "homepage": "https://github.com/DNR500/jtal-adapter",
   "scripts": {
@@ -30,5 +30,9 @@
     "grunt-contrib-copy": "^0.8.2",
     "grunt-contrib-clean": "^0.7.0",
     "grunt-bump": "^0.6.0"
+  },
+  "dependencies": {
+    "cheesecake-core": "0.0.8",
+    "tal": "^3.0.4"
   }
 }
