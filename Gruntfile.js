@@ -67,6 +67,12 @@ module.exports = function(grunt) {
             }
         },
 
+        exec: {
+            npm_publish: {
+                command: 'npm publish'
+            }
+        },
+
         bump: {
             options: {
                 files: ['package.json', 'bower.json'],
@@ -86,13 +92,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-plato');
     grunt.loadNpmTasks('grunt-open');
+    grunt.loadNpmTasks('grunt-exec');
 
     grunt.registerTask('check', ['jsonlint', 'jshint']);
     grunt.registerTask('test', ['check', 'jasmine']);
     grunt.registerTask('build', ['test', 'clean:build', 'copy:srcToBuild']);
-    grunt.registerTask('release', ['build', 'bump']);
+    grunt.registerTask('release', ['build', 'bump', 'exec:npm_publish']);
     grunt.registerTask('launch-plato', ['plato', 'open:plato']);
     grunt.registerTask('default', ['test']);
-    grunt.loadNpmTasks('grunt-exec');
-
 };

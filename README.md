@@ -438,5 +438,5 @@ To do this using TAL you should look at the encodJson() and decodeJson() methods
 ### For development of jTal - commands of note
 * **grunt test** - runs tests and lint checks.
 * **grunt build** - creates a new folder in your project and build the version for distribution.
-* **grunt release** - bumps the version number, creates a number release tag, commits the new tag to git and updates master with a new - the release should then be available via bower.
+* **grunt release** - bumps the version number, creates a number release tag, commits the new tag to git and updates master with a new commit. Publishes to both npm and bower.
 
