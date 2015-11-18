@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "tal": "~3.0.2",
-    "cheesecake": "~0.0.7"
+    "cheesecake": "~0.0.9"
   }
 }
 
