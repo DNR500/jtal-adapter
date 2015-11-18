@@ -11,16 +11,18 @@ require.def('jtal/jtaladapter',
 
         'jtal/actions/exitapplication',
         'jtal/actions/launchapplication',
+        'jtal/actions/pushcomponent',
 
         'jtal/stats/stat'
     ],
     function (LabelRecipe, HorizontalListRecipe, VerticalListRecipe, TextButtonRecipe, ContainerRecipe,
-              ImageRecipe, ButtonRecipe, CarouselRecipe, ExitApplication, LaunchApplication, Stat) {
+              ImageRecipe, ButtonRecipe, CarouselRecipe, ExitApplication, LaunchApplication, PushComponent, Stat) {
         'use strict';
 
         var addApplicationActions = function (cheesecakeFactory) {
             cheesecakeFactory.addAction('exitApp', ExitApplication);
             cheesecakeFactory.addAction('launchApp', LaunchApplication);
+            cheesecakeFactory.addAction('pushComponent', PushComponent);
         };
 
         var addApplicationRecipes = function (cheesecakeFactory) {

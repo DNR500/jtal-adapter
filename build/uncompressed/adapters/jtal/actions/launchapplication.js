@@ -5,9 +5,10 @@ require.def('jtal/actions/launchapplication',
     function (Application) {
         'use strict';
         return function (parameters) {
+            if(!parameters.url){
+                throw "url should be set in the parameter for the launchapplication action";
+            }
             return function () {
-                // TODO - write test
-                // TODO - write schemaf
                 Application.getCurrentApplication().launchAppFromURL(parameters.url,
                                                                         parameters.data,
                                                                         parameters.route,
