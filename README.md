@@ -112,7 +112,7 @@ jtal/build/uncompressed/schemas/jtal/jtal_schema.json
 
 Using this schema you should be able to perform validation tests on your jTal JSON objects.
 
-The the tests used to develop the jTal framework itself use a combination of [Jasmine](https://github.com/gruntjs/grunt-contrib-jasmine) and the client side version of [Z-Schema](https://github.com/zaggino/z-schema). Using the schema should give you reassurance that your jTal JSON will work as expected when creating your UI components.
+The tests used to develop the jTal framework itself use a combination of [Jasmine](https://github.com/gruntjs/grunt-contrib-jasmine) and the client side version of [Z-Schema](https://github.com/zaggino/z-schema). Using the schema should give you reassurance that your jTal JSON will work as expected when creating your UI components.
 
 ### Available recipes, action and stats
 * **Recipes**
