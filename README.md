@@ -1,7 +1,7 @@
 # jTal
 A little adapter for the cheesecake framework that allows you to build components declaratively using TAL and JSON.
 
-This library takes full advantage of the [cheesecake](https://github.com/DNR500/cheesecake) and has been built to use TAL. To see this adapter in action take a look at [cheesecake-jtal-example](https://github.com/DNR500/cheesecake-jtal-example)
+This library takes full advantage of [cheesecake](https://github.com/DNR500/cheesecake) and has been built to use TAL. To see this adapter in action take a look at [cheesecake-jtal-example](https://github.com/DNR500/cheesecake-jtal-example)
 
 #### To import into your project
 jTal is available via both npm and bower
